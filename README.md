@@ -1,13 +1,18 @@
-# trello-task
+# trello-task 
+
+[The Trello Task library](https://www.npmjs.com/package/@vobi-io/trello-task)
 
 ## Instalation:
-
-### Using yarn: yarn add @vobi-io/trello-task husky
-
-### Using yarn: npm i -S @vobi-io/trello-task husky
+### Using yarn: 
+```
+$ yarn add @vobi-io/trello-task husky
+```
+### Using npm:
+```
+$ npm i -S @vobi-io/trello-task husky
+```
 
 ## Usage : 
-
 
 ```
 
