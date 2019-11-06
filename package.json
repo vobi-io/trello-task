@@ -17,5 +17,9 @@
     "comment",
     "comment-task", 
     "trello api"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vobi-io/trello-task"
+  }
 }
