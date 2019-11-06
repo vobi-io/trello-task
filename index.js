@@ -5,7 +5,7 @@ module.exports = ({ reqBody, keyWord }) => {
 
   const service = require('./service')(reqBody);
 
-  exec('git rev-parse HEAD', (err, stdout) => {
+  exec('git rev-parse `git branch -r --sort=committerdate | tail -1`', (err, stdout) => {
     if (err) return;
 
     exec(`git log -u -1 ${stdout}`, (error, out) => {
