@@ -10,7 +10,7 @@ module.exports = ({ reqBody, keyWord }) => {
     exec('git rev-parse HEAD', (err2, localBranch) => {
       if (err2) return;
 
-      exec(`git diff ${remoteBranch} ${localBranch}`, (error, out) => {
+      exec(`git diff ${remoteBranch.replace('\n', '')} ${localBranch.replace('\n', '')}`, (error, out) => {
         if (error) return;
 
         const latest = out.split('\n').filter((diff) => diff.indexOf(keyWord) !== -1
