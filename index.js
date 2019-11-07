@@ -2,8 +2,9 @@
 module.exports = ({ reqBody, keyWord }) => {
   const { exec } = require('child_process');
 
-
   const service = require('./service')(reqBody);
+  const gitParser = require('./helpers/gitParser');
+  const commentParser = require('./helpers/commentParser');
 
   exec('git rev-parse `git branch -r --sort=committerdate | tail -1`', (err1, remoteBranch) => {
     if (err1) return;
@@ -13,11 +14,10 @@ module.exports = ({ reqBody, keyWord }) => {
       exec(`git diff ${remoteBranch.replace('\n', '')} ${localBranch.replace('\n', '')}`, (error, out) => {
         if (error) return;
 
-        const latest = out.split('\n').filter((diff) => diff.indexOf(keyWord) !== -1
-      && diff.indexOf('+') !== -1 && diff.indexOf('+') === 0);
+        const latest = gitParser({ keyWord, out });
         latest.forEach((task) => {
-          const description = task.split(`${keyWord} `).reverse()[0];
-          service.createCard({ name: description });
+          const { name, due } = commentParser({ keyWord, task });
+          service.createCard({ name, due });
         });
       });
     });

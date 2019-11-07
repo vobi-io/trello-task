@@ -24,6 +24,20 @@ $ npm i -S @vobi-io/trello-task husky
 
 ![trello image](https://i.ibb.co/dGNy1gt/Screenshot-from-2019-11-05-17-43-00.png)
 
+### Extra Featueres:
+
+```
+
+// @task refactor function @due 11/29/2019
+
+```
+
+### Using keyword @due with following date formate MM/DD/YYYY you can also set deadlines 
+
+![trello image](https://i.ibb.co/Bc1Smsn/trello.png)
+
+
+
 ## Configuration :
 
 ### Create file in your project root directory for example trello.js
