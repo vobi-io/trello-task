@@ -47,14 +47,21 @@ $ npm i -S @vobi-io/trello-task husky
 
 const task = require('@vobi-io/trello-task')
 
-const reqBody = {
+const configuration = {
     key: \* Trello api key *\,
     token: \* Trello api token *\,
-    idList: \* Id of list on trello you want your tasks to be created *\,
-    keepFromSource: 'all',
+    lists: [
+      { keyWord: '@task', idList: \* Id of list on trello you want your tasks to be created *\ },
+      { keyWord: '@major', idList: \* Id of list on trello you want your tasks to be created *\ }
+    ]
 };
 
-task({ reqBody, keyWord: "@task" })
+/*
+  lists in configuration will search for keyword you specify 
+  and create task in specified list 
+*/
+
+task(configuration)
 
 // you can choose any keyword you want
 

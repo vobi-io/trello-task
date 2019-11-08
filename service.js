@@ -4,7 +4,7 @@ const axios = require('axios');
 const url = 'https://api.trello.com/1/cards';
 
 
-const service = (reqBody) => {
+const service = ({ key, token }) => {
   const createCard = (body) => {
     if (!body.due) {
       delete body.due;
@@ -12,8 +12,10 @@ const service = (reqBody) => {
       body.due = new Date(body.due).toLocaleDateString();
     }
     return axios.post(url, {
-      ...reqBody,
       ...body,
+      keepFromSource: 'all',
+      key,
+      token,
     });
   };
 
